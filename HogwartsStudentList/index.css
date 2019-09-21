@@ -1,0 +1,31 @@
+#blackOverlay {
+    filter: opacity(80%);
+    background-color: black;
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: none;
+}
+#popUP {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    animation: appear 0.15s linear forwards;
+    animation-play-state: running;
+    background-color: #313131;
+}
+body,
+html,
+article {
+    background-color: black;
+    text-align: center;
+}
+p {
+    color: orange;
+}
