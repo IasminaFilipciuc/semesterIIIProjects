@@ -6,18 +6,23 @@ const houseFilter = sortingSection.querySelector("#houseFilter");
 const nameList = document.querySelector("#nameList");
 const blackOverlay = document.querySelector("#blackOverlay");
 const studentList = [];
-let i = 0; // Integer Meant for Looping in studentList
-let integerMeantForOneTimeUse = 0;
-let halfFamilies = []; // Making it global
-let pureFamilies = []; // Making it global
-let lengthOfStudent = studentList.length; // Fixing initialization error
+let i = 0; // Integer Meant for Looping in studentList.
+let i2 = 0; //Integer Meant for sorting algorithm.
+let integerMeantForOneTimeUse = 0; // Integer Meant for injecting myself.
+let sortingVariable;
+let halfFamilies = []; // Making it global.
+let pureFamilies = []; // Making it global.
+let lengthOfStudent = studentList.length; // Fixing initialization error.
 let allStudentsInteger = 0;
 let houseGryffindorInteger = 0;
 let houseSlytherinInteger = 0;
 let houseHufflepuffInteger = 0;
 let houseRavenclawInteger = 0;
 
-
+// Function/Variable Order?
+// Take in consideration fatigue, 2 days, just looking for overall opinion on the approach.
+// Accept/Reject
+// Imports fml.
 
 
 function Student(First, Last, House, Gender, Nickname) {
@@ -97,7 +102,7 @@ function main(fullName, house, initial, gender) {
     }
     function injectMyself() {
         integerMeantForOneTimeUse ++;
-        const myself = new Student("Valentin", "Dumitrache", "Slytherin", "Man");
+        const myself = new Student("Valentin", "Dumitrache", "Slytherin", "Boy");
         const myName = document.createElement('p');
         myName.innerHTML = "Name: " + "Valentin Dumitrache";
         myName.classList.add("name");
@@ -109,7 +114,6 @@ function main(fullName, house, initial, gender) {
         myArticle.appendChild(myHouse);
         nameList.appendChild(myArticle);
         studentList.push(myself);
-        lengthOfStudent ++;
     }
     function createStudentDOM() {
         let name = document.createElement("p");
@@ -128,17 +132,17 @@ function popUp(article) {
     let foundStudent;
     let objectArray = [];
     let popUP = objectInitialize("div", "popUP");
+    let popUPPhoto = objectInitialize("img", "popUPPhoto");
     let popUPName = objectInitialize("p", "popUPName");
     let popUPHouse = objectInitialize("p", "popUPHouse");
     let popUPGender = objectInitialize("p", "popUPGender");
     let popUPRacialProfile = objectInitialize("p", "popUPRacialProfile");
     let popUPHouseCrest = objectInitialize("img", "popUPHouseCrest");
-    let popUPPhoto = objectInitialize("img", "popUPPhoto");
     let popUPExpelButton = objectInitialize("button", "popUPExpelButton");
     let popUPPrefectButton = objectInitialize("button", "popUPPrefectButton");
     let popUPInquisitionButton = objectInitialize("button", "popUPInquisitionButton");
 
-    function eventListenerAction(student, studentMethod1, studentMethod2, extra1, innerText, extra2) {
+    function eventListenerAction(student, studentMethod1, studentMethod2, extra1, innerText, button, extra2) {
         foundStudent = studentLoop(student);
         if(extra2 === undefined) {
             if(studentMethod2 === true) {
@@ -153,7 +157,7 @@ function popUp(article) {
                 modifyStudentName(extra1);
             }
         }
-        popUPInquisitionButton.innerText = innerText;
+        eval(button).innerText = innerText;
     }
     function studentLoop(student) {
         i = 0;
@@ -177,6 +181,9 @@ function popUp(article) {
         let object = document.createElement(tag);
         object.id = id;
         switch (id) {
+            case "popUP":
+                object.classList.add(student.getHouse());
+                break;
             case "popUPName":
                 object.innerHTML = student.getFirstName() + " " + student.getLastName();
                 objectArray.push(id);
@@ -270,6 +277,9 @@ function popUp(article) {
         objectArray.forEach(element => {
             popUP.appendChild(eval(element))
         });
+        document.querySelectorAll("article").forEach( element => {
+          element.style.animation = "paused";
+        })
     }
     function expelButtonEventListener() {
         popUPExpelButton.addEventListener("click", () => {
@@ -300,7 +310,7 @@ function popUp(article) {
             if(!student.getPrefect() === true) {
                 let availableORstudent = checkPrefect(student);
                 if(availableORstudent === "Available") {
-                    eventListenerAction(student, student.doprefect(), student.getInquisitionStatus(), "Prefect", "Remove as Prefect", "addExtra");
+                    eventListenerAction(student, student.doprefect(), student.getInquisitionStatus(), "Prefect", "Remove as Prefect", "popUPPrefectButton", "addExtra");
                 }
                 else {
 
@@ -311,17 +321,19 @@ function popUp(article) {
                     function acceptMessage() {
                         foundStudent = studentLoop(availableORstudent);
                         foundStudent.unPrefect();
-                        eventListenerAction(student, student.doprefect(), student.getInquisitionStatus(), "Prefect", "Remove as Prefect", "addExtra");
+                        eventListenerAction(student, student.doprefect(), student.getInquisitionStatus(), "Prefect", "Remove as Prefect", "popUPPrefectButton", "addExtra");
+                        blackOverlay.style.zIndex = "99";
                         popUPChangePrefect.remove();
                     }
                     function addModal() {
-                        popUP.style.zIndex = "100";
-                        // blackOverlay.style.zIndex = "101";
+                        popUPChangePrefect.id = "popUPChangePrefect";
+                        blackOverlay.style.zIndex = "101";
                         popUPChangePrefectMessage.innerHTML = "Do you wish to remove " + availableORstudent.getFirstName() + " " +availableORstudent.getLastName() + " as prefect and add " + student.getFirstName() + " " +student.getLastName();
                         popUPChangePrefectMessageReject.innerText = "Reject";
                         popUPChangePrefectMessageAccept.innerText = "Accept";
                         popUPChangePrefectMessageReject.addEventListener("click", () => {
                             popUPChangePrefect.remove();
+                            blackOverlay.style.zIndex = "99";
                         });
                         popUPChangePrefectMessageAccept.addEventListener("click", acceptMessage);
                         popUPChangePrefect.appendChild(popUPChangePrefectMessage);
@@ -346,12 +358,12 @@ function popUp(article) {
     function inquisitionButtonEventListener() {
         popUPInquisitionButton.addEventListener("click", () => {
             if(!student.getInquisitionStatus() === true) {
-                eventListenerAction(student, student.addToInquisition(), student.getPrefect(), "Inquisition Member", "Remove from Inquisition Squad", "addExtra");
+                eventListenerAction(student, student.addToInquisition(), student.getPrefect(), "Inquisition Member", "Remove from Inquisition Squad", "popUPInquisitionButton", "addExtra");
                 setTimeout(() => {
-                    eventListenerAction(student, student.removeFromInquisition(), student.getPrefect(), "Prefect", "Add to Inquisition Squad");
+                    eventListenerAction(student, student.removeFromInquisition(), student.getPrefect(), "Prefect", "Add to Inquisition Squad", "popUPInquisitionButton");
                 }, 5000)
             } else {
-                eventListenerAction(student, student.removeFromInquisition(), student.getPrefect(), "Prefect", "Add to Inquisition Squad");
+                eventListenerAction(student, student.removeFromInquisition(), student.getPrefect(), "Prefect", "Add to Inquisition Squad", "popUPInquisitionButton");
             }
         });
     }
@@ -369,6 +381,7 @@ function popUp(article) {
     addEventListenersAll();
     appendObjects();
     openBlack();
+
     document.body.appendChild(popUP);
 }
 function createStudent(student, gender) {
@@ -419,27 +432,38 @@ function reinitializeHelper() {
     lengthOfStudent = studentList.length;
 }
 function sortStudents(byWhat) {
-    let i2;
-    switch (byWhat) {
-        case "firstName":
-            i2 = 0;
-            studentList.sort((a, b) => (a.getFirstName() > b.getFirstName()) ? 1 : -1);
-            break;
-        case "lastName":
-            i2 = 0;
-            studentList.sort((a, b) => (a.getLastName() > b.getLastName()) ? 1 : -1);
-            break;
-        case "houseName":
-            if(i2 !== 1 && houseFilter.value === "all") {
-                studentList.sort((a, b) => (a.getHouse() > b.getHouse()) ? 1 : -1);
-            }
-            i2 = 1;
-            break;
+    if(byWhat !== sortingVariable) {
+        sortingVariable = byWhat;
+        switcher(1, -1)
     }
-    if(expelledButton.innerHTML === "See Expelled Students") {
-        reinitialize("normal");
-    } else {
-        reinitialize("expelled");
+    else {
+        sortingVariable = "else";
+        switcher(-1, 1)
+    }
+    function switcher(var1, var2) {
+        switch (byWhat) {
+            case "firstName":
+                studentList.sort((a, b) => (a.getFirstName() > b.getFirstName()) ? var1 : var2);
+                switcherHelper();
+                break;
+            case "lastName":
+                studentList.sort((a, b) => (a.getLastName() > b.getLastName()) ? var1 : var2);
+                switcherHelper();
+                break;
+            case "houseName":
+                if(houseFilter.value === "all") {
+                    studentList.sort((a, b) => (a.getHouse() > b.getHouse()) ? var1 : var2);
+                    switcherHelper();
+                }
+                break;
+        }
+    }
+    function switcherHelper() {
+        if(expelledButton.innerHTML === "See Expelled Students") {
+            reinitialize("normal");
+        } else {
+            reinitialize("expelled");
+        }
     }
 }
 function makeStringNice(string) {
@@ -602,6 +626,7 @@ function countStudents(house) {
 
     }
 }
+
 fetchJson();
 addEventListeners();
 
