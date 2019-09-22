@@ -19,10 +19,6 @@ let houseSlytherinInteger = 0;
 let houseHufflepuffInteger = 0;
 let houseRavenclawInteger = 0;
 
-// Function/Variable Order?
-// Take in consideration fatigue, 2 days, just looking for overall opinion on the approach.
-// Accept/Reject
-// Imports fml.
 
 
 function Student(First, Last, House, Gender, Nickname) {
