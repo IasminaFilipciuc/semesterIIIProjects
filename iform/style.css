@@ -1,0 +1,342 @@
+.logo {
+  position: absolute;
+  width: 30%;
+  height: 5%;
+  left: 35%;
+  top: 5%;
+}
+
+.stepsbg {
+  position: absolute;
+  width: 110%;
+  height: 7%;
+  left: 0%;
+  top: 15%;
+  background: #f4f4f4;
+}
+.iconbasket {
+  position: absolute;
+  width: 18px;
+  height: 19px;
+  left: 10%;
+  top: 30%;
+}
+.icondelivery {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  left: 43%;
+  top: 30%;
+}
+.iconpayment {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  left: 80%;
+  top: 30%;
+}
+
+.borderbox {
+  position: absolute;
+  width: 338px;
+  height: 139px;
+  left: 17px;
+  top: 28%;
+
+  background: #fdfafa;
+  border: 3.5px solid #10c677;
+  box-sizing: border-box;
+}
+.jacket1 {
+  position: absolute;
+  width: 114px;
+  height: 106px;
+  left: 5%;
+  top: 10%;
+}
+#inputBox {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+}
+.inputs {
+  display: block;
+  border: 2px solid;
+  margin-bottom: 25px;
+  font-size: 25px;
+  padding: 5px;
+}
+.jackettext {
+  position: absolute;
+  width: 163px;
+  height: 77px;
+  left: 50%;
+  top: 40%;
+  font-family: Roboto;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 14px;
+  color: #000000;
+}
+.content1 {
+  position: absolute;
+  width: 348px;
+  height: 0px;
+  left: 17px;
+  top: 58%;
+  border: 1px solid #b4b4b4;
+}
+.contenttext1 {
+  position: absolute;
+  width: 91px;
+  height: 10px;
+  left: 17px;
+  top: -40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+}
+#payments {
+   background-image: url('images/payments.png');
+   width: 358px;
+   height: 240px;
+   background-size: cover;
+   position: absolute;
+   top: 25%;
+ }
+#terms {
+  background-image: url('images/terms.png');
+  width: 393px;
+  height: 261px;
+  background-size: cover;
+  position: absolute;
+  top: 56%;
+  left: -6%;
+}
+
+.contenttextprice1 {
+  position: absolute;
+  width: 74px;
+  height: 9px;
+  left: 85%;
+  top: -40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #10c677;
+}
+.content2 {
+  position: absolute;
+  width: 348px;
+  height: 0px;
+  left: 17px;
+  top: 64%;
+  border: 1px solid #b4b4b4;
+}
+.contenttext2 {
+  position: absolute;
+  width: 91px;
+  height: 10px;
+  left: 17px;
+  top: -40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+}
+.contenttextprice2 {
+  position: absolute;
+  width: 68px;
+  height: 10px;
+  left: 85%;
+  top: -40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+}
+.content3 {
+  position: absolute;
+  width: 348px;
+  height: 0px;
+  left: 17px;
+  top: 70%;
+  border: 1px solid #b4b4b4;
+}
+.contenttext3 {
+  position: absolute;
+  width: 91px;
+  height: 10px;
+  left: 17px;
+  top: -40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+}
+.contenttextprice3 {
+  position: absolute;
+  width: 68px;
+  height: 9px;
+  left: 85%;
+  top: -40px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+
+  color: #000000;
+}
+.totalpricetxt {
+  position: absolute;
+  width: 197px;
+  height: 15px;
+  left: 9%;
+  top: 70%;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+}
+
+.totalprice {
+  position: absolute;
+  width: 74px;
+  height: 11px;
+  left: 302px;
+  top: 70%;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+
+  color: #10c677;
+}
+
+.button {
+  position: absolute;
+  width: 70%;
+  height: 68px;
+  left: 15%;
+  top: 80%;
+  background: #10c677;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #ffffff;
+}
+.returnbutton {
+  position: absolute;
+  width: 230px;
+  height: 37px;
+  left: 20%;
+  top: 90%;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #8d8c8c;
+}
+
+@media (min-width: 1025px) {
+  .logo {
+    position: absolute;
+    width: 20%;
+    height: 5%;
+    left: 40%;
+    top: 5%;
+  }
+  .iconbasket {
+    width: 40px;
+    height: 39px;
+    top: 15%;
+  }
+  .icondelivery {
+    width: 40px;
+    top: 15%;
+    height: 39px;
+  }
+  .iconpayment {
+    width: 40px;
+    height: 39px;
+    top: 15%;
+  }
+  .borderbox {
+    width: 50%;
+    height: 20%;
+    left: 20%;
+    top: 91%;
+  }
+  .jackettext {
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    left: 60%;
+    top: 25%;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 15px;
+    line-height: 28px;
+    color: #000000;
+  }
+  .jacket1 {
+    position: absolute;
+    width: 20%;
+    height: 70%;
+    left: 10%;
+    top: 15%;
+  }
+  .button {
+    position: absolute;
+    width: 25%;
+    height: 68px;
+    left: 35%;
+    top: 80%;
+  }
+  .returnbutton {
+    position: absolute;
+    width: 230px;
+    height: 37px;
+    left: 38%;
+    top: 90%;
+  }
+  .content1 {
+    left: 30%;
+  }
+  .content2 {
+    left: 30%;
+  }
+  .content3 {
+    left: 30%;
+  }
+  .totalpricetxt {
+    left: 31%;
+  }
+  .totalprice {
+    left: 53%;
+  }
+
+}
